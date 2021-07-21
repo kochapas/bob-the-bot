@@ -27,7 +27,9 @@ def bot_answer_to(message, user_name)
   elsif message.downcase.include?('weather in')
     # call weather API in weather_api.rb
     fetch_weather(message)
-  elsif message.downcase.include?('eat')
+  elsif message.downcase.match?(/love/)
+    "Of course I love you! ❤"
+  elsif message.downcase.match?(/\beat\b/)
     ['sushi', 'tacos', 'curry', 'pad thai', 'kebab', 'spaghetti', 'burger'].sample
   elsif message.downcase.include?('events')
     # call events API in tokyo_events.rb
