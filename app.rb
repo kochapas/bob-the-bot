@@ -23,7 +23,19 @@ def bot_answer_to(message, user_name)
   # return '' unless message.downcase.include?('bob') # Only answer to messages with 'bob'
 
   if message.downcase == 'help' || message.downcase == '-h'
-    "💪 Here's what I can do...\n⛅ Want to know the weather? -> 'Weather in #your_city'\n🍜 Don't know what to eat? -> 'What to eat?'\n🎭 Want to know what's going on in Tokyo? -> 'Tokyo Events'\n'✈ Feeling adventurous? -> 'Where should I go next?'"
+    "💪 Here's what I can do...\n⛅ Want to know the weather? -> 'Weather in #your_city'\n🍜 Don't know what to eat? -> 'What to eat?'\n🎭 Want to know what's going on in Tokyo? -> 'Tokyo Events'\n'✈ Feeling adventurous? -> 'Where should I go next?'\n🔥 Convert temperature -> '86f to c' or '30c to f'"
+  elsif message.downcase.include?('c to f')
+    temp = c_to_f(message)
+    return_message = "#{temp.to_s}f."
+    return_message += " Pretty hot isn't it? 🌞" if temp > 90
+    return_message += " I wonder if it will snow soon... ❄" if temp < 50
+    return return_message
+  elsif message.downcase.include?('f to c')
+    temp = f_to_c(message)
+    return_message = "#{temp.to_s}c."
+    return_message += ". Pretty hot isn't it? 🌞" if temp > 32
+    return_message += ". I wonder if it will snow soon... ❄" if temp < 10
+    return return_message
   elsif message.downcase.include?('hello') || message.downcase == 'hi'
     # respond if a user says hello
     "😸 Hello #{user_name}, how are you doing today?"
@@ -75,6 +87,16 @@ def send_bot_message(message, client, event)
 
   client.reply_message(event['replyToken'], message)
   'OK'
+end
+
+def c_to_f(string)
+  float = string.to_f
+  return (float − 32) * (5 / 9)
+end
+
+def f_to_c(string)
+  float = string.to_f
+  return (float * 9 / 5) + 32
 end
 
 post '/callback' do
