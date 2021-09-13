@@ -94,12 +94,12 @@ end
 
 def f_to_c(string)
   float = string.to_f
-  return (float - 32) * (5 / 9)
+  return ((float - 32.0) * (5.0 / 9.0)).round(2)
 end
 
 def c_to_f(string)
   float = string.to_f
-  return (float * 9 / 5) + 32
+  return ((float * 9.0 / 5.0) + 32).round(2)
 end
 
 post '/callback' do
