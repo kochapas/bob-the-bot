@@ -27,13 +27,13 @@ def bot_answer_to(message, user_name)
   elsif message.downcase.include?('c to f')
     temp = c_to_f(message)
     return_message = "#{temp.to_s}f."
-    return_message += " Pretty hot isn't it? 🌞" if temp > 90
+    return_message += " Pretty hot, isn't it? 🌞" if temp > 90
     return_message += " I wonder if it will snow soon... ❄" if temp < 50
     return return_message
   elsif message.downcase.include?('f to c')
     temp = f_to_c(message)
     return_message = "#{temp.to_s}c."
-    return_message += " Pretty hot isn't it? 🌞" if temp > 32
+    return_message += " Pretty hot, isn't it? 🌞" if temp > 32
     return_message += " I wonder if it will snow soon... ❄" if temp < 10
     return return_message
   elsif message.downcase.include?('hello') || message.downcase == 'hi'
@@ -92,12 +92,12 @@ def send_bot_message(message, client, event)
   'OK'
 end
 
-def c_to_f(string)
+def f_to_c(string)
   float = string.to_f
   return (float − 32) * (5 / 9)
 end
 
-def f_to_c(string)
+def c_to_f(string)
   float = string.to_f
   return (float * 9 / 5) + 32
 end
