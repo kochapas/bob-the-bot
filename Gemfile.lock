@@ -7,6 +7,8 @@ GEM
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     eventmachine (1.2.7)
+    faker (2.18.0)
+      i18n (>= 1.6, < 2)
     faye-websocket (0.10.7)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.5.1)
@@ -20,6 +22,8 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
+    i18n (1.8.10)
+      concurrent-ruby (~> 1.0)
     ibm_watson (0.8.0)
       concurrent-ruby (~> 1.0)
       eventmachine (~> 1.2)
@@ -48,6 +52,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  faker
   geocoder
   ibm_watson
   line-bot-api (~> 1.18.0)

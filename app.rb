@@ -5,6 +5,7 @@ require 'net/http'
 require 'uri'
 require 'tempfile'
 require 'line/bot'
+require 'faker'
 
 require_relative 'ibm_watson'
 require_relative 'weather_api'
@@ -21,15 +22,21 @@ def bot_answer_to(message, user_name)
   # If you want to add Bob to group chat, uncomment the next line
   # return '' unless message.downcase.include?('bob') # Only answer to messages with 'bob'
 
-  if message.downcase.include?('hello')
+  if message.downcase == 'help' || message.downcase == '-h'
+    "💪 Here's what I can do...\n⛅ Want to know the weather? -> 'Weather in #your_city'\n🍜 Don't know what to eat? -> 'What to eat?'\n🎭 Want to know what's going on in Tokyo? -> 'Tokyo Events'\n'✈ Feeling adventurous? -> 'Where should I go next?'"
+  elsif message.downcase.include?('hello')
     # respond if a user says hello
-    "Hello #{user_name}, how are you doing today?"
+    "😸 Hello #{user_name}, how are you doing today?"
   elsif message.downcase.include?('weather in')
     # call weather API in weather_api.rb
     fetch_weather(message)
-  elsif message.downcase.include?('eat')
-    ['sushi', 'tacos', 'curry', 'pad thai', 'kebab', 'spaghetti', 'burger'].sample
-  elsif message.downcase.include?('events')
+  elsif message.downcase.end_with?('eat?')
+    Faker::Food.dish
+  elsif message.downcase.end_with?('go next?')
+    Faker::Nation.capital_city
+  elsif message.downcase == 'what are you doing?'
+    Faker::Hobby.activity
+  elsif message.downcase.include?('tokyo events')
     # call events API in tokyo_events.rb
     fetch_tokyo_events
   elsif message.match?(/([\p{Hiragana}\p{Katakana}\p{Han}]+)/)
@@ -37,9 +44,9 @@ def bot_answer_to(message, user_name)
     bot_jp_answer_to(message, user_name)
   elsif message.end_with?('?')
     # respond if a user asks a question
-    "Good question, #{user_name}!"
+    "Good question, #{user_name}! I actually don't know! 🏃‍♂️"
   else
-    ["I couldn't agree more.", 'Great to hear that.', 'Interesting.'].sample
+    "I don't know what are you talking about 🤔. Type 'help' or '-h' to know more about what I can do 😉."
   end
 end
 
