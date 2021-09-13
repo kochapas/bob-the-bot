@@ -38,7 +38,7 @@ def bot_answer_to(message, user_name)
     return return_message
   elsif message.downcase.include?('hello') || message.downcase == 'hi'
     # respond if a user says hello
-    "😸 Hello #{user_name}, how are you doing today?"
+    "😸 Hello #{user_name}, how are you doing today?\nP.S. Type 'help' to find out more about what I can do 😉."
   elsif message.downcase.include?('weather in')
     # call weather API in weather_api.rb
     fetch_weather(message)
@@ -61,7 +61,7 @@ def bot_answer_to(message, user_name)
     # respond if a user asks a question
     "Good question, #{user_name}! I actually don't know! 🏃‍♂️"
   else
-    "I don't know what are you talking about 🤔. Type 'help' or '-h' to know more about what I can do 😉."
+    "I don't know what are you talking about 🤔. Type 'help' or '-h' to find out more about what I can do 😉."
   end
 end
 
