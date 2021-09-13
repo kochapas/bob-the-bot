@@ -23,7 +23,7 @@ def bot_answer_to(message, user_name)
   # return '' unless message.downcase.include?('bob') # Only answer to messages with 'bob'
 
   if message.downcase == 'help' || message.downcase == '-h'
-    "💪 Here's what I can do...\n⛅ Want to know the weather? -> 'Weather in #your_city'\n🍜 Don't know what to eat? -> 'What to eat?'\n🎭 Want to know what's going on in Tokyo? -> 'Tokyo Events'\n'✈ Feeling adventurous? -> 'Where should I go next?'\n🔥 Convert temperature -> '86f to c' or '30c to f'"
+    "💪 Here's what I can do...\n⛅ Want to know the weather? -> 'Weather in #your_city'\n🍜 Don't know what to eat? -> 'What to eat?'\n🎭 Want to know what's going on in Tokyo? -> 'Tokyo Events'\n'✈ Feeling adventurous? -> 'Where should I go next?'\n🌞 Convert temperature? -> '86f to c' or '30c to f'\n😶 Can't decided? -> 'Flip the coin'"
   elsif message.downcase.include?('c to f')
     temp = c_to_f(message)
     return_message = "#{temp.to_s}f."
@@ -42,6 +42,9 @@ def bot_answer_to(message, user_name)
   elsif message.downcase.include?('weather in')
     # call weather API in weather_api.rb
     fetch_weather(message)
+  elsif message.downcase == 'flip the coin'
+    result = rand(2)
+    return result.zero? ? 'Head 🐱' : 'Tail 🐈'
   elsif message.downcase.end_with?('eat?')
     Faker::Food.dish
   elsif message.downcase.end_with?('go next?')
