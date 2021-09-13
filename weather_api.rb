@@ -7,11 +7,11 @@ def fetch_weather(message)
   # Accepted message:
   # ~~~~~ weather in XXXXX
   #  ^anything          ^will become the location
-  location = message.match(/.+weather in (\w+).*/)[1]
+  location = message.delete('?').split.last
   # location = "tokyo" if location.length == 0
   # Coordinates from keyword
   coord = Geocoder.search(location).first.coordinates
-  url = "https://api.openweathermap.org/data/2.5/onecall?lat=#{coord[0]}&lon=#{coord[1]}&exclude=current,minutely,hourly&appid=#{WEATHER_API}"
+  url = "https://api.openweathermap.org/data/2.5/onecall?lat=#{coord[0]}&lon=#{coord[1]}&exclude=current,minutely,hourly&appid=#{ENV['WEATHER_API']}"
   begin
     data_serialized = open(url).read
   rescue OpenURI::HTTPError => e
