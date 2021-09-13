@@ -11,8 +11,7 @@ def fetch_weather(message)
   # location = "tokyo" if location.length == 0
   # Coordinates from keyword
   coord = Geocoder.search(location).first.coordinates
-  api_key = 'f5191f73c320e67df9461049016befe3'
-  url = "https://api.openweathermap.org/data/2.5/onecall?lat=#{coord[0]}&lon=#{coord[1]}&exclude=current,minutely,hourly&appid=#{api_key}"
+  url = "https://api.openweathermap.org/data/2.5/onecall?lat=#{coord[0]}&lon=#{coord[1]}&exclude=current,minutely,hourly&appid=#{WEATHER_API}"
   begin
     data_serialized = open(url).read
   rescue OpenURI::HTTPError => e
