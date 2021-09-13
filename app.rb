@@ -33,8 +33,8 @@ def bot_answer_to(message, user_name)
   elsif message.downcase.include?('f to c')
     temp = f_to_c(message)
     return_message = "#{temp.to_s}c."
-    return_message += ". Pretty hot isn't it? 🌞" if temp > 32
-    return_message += ". I wonder if it will snow soon... ❄" if temp < 10
+    return_message += " Pretty hot isn't it? 🌞" if temp > 32
+    return_message += " I wonder if it will snow soon... ❄" if temp < 10
     return return_message
   elsif message.downcase.include?('hello') || message.downcase == 'hi'
     # respond if a user says hello
