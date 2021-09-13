@@ -94,7 +94,7 @@ end
 
 def f_to_c(string)
   float = string.to_f
-  return (float − 32) * (5 / 9)
+  return (float - 32) * (5 / 9)
 end
 
 def c_to_f(string)
