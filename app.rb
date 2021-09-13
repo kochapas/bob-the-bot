@@ -24,7 +24,7 @@ def bot_answer_to(message, user_name)
 
   if message.downcase == 'help' || message.downcase == '-h'
     "💪 Here's what I can do...\n⛅ Want to know the weather? -> 'Weather in #your_city'\n🍜 Don't know what to eat? -> 'What to eat?'\n🎭 Want to know what's going on in Tokyo? -> 'Tokyo Events'\n'✈ Feeling adventurous? -> 'Where should I go next?'"
-  elsif message.downcase.include?('hello')
+  elsif message.downcase.include?('hello') || message.downcase == 'hi'
     # respond if a user says hello
     "😸 Hello #{user_name}, how are you doing today?"
   elsif message.downcase.include?('weather in')

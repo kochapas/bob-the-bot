@@ -8,7 +8,7 @@ def fetch_weather(message)
   # ~~~~~ weather in XXXXX
   #  ^anything          ^will become the location
   location = message.match(/.+weather in (\w+).*/)[1]
-
+  # location = "tokyo" if location.length == 0
   # Coordinates from keyword
   coord = Geocoder.search(location).first.coordinates
   api_key = 'f5191f73c320e67df9461049016befe3'
